@@ -165,9 +165,9 @@ public class DeptDAO {
 				//DeptVO vo = new DeptVO();
 				//vo.setDeptno(deptno);
 				//vo.setDname(dname);
-				//vo.setLoc(loc);
+				//vo.setLoc(loc); 방법 1
 				
-				DeptVO vo = new DeptVO(deptno, dname, loc);
+				DeptVO vo = new DeptVO(deptno, dname, loc); // 방법 2
 				
 				// collection에 담기
 				list.add(vo);
@@ -180,4 +180,17 @@ public class DeptDAO {
 		return list;
 	} // selectAll() end
 	
+	// 자원반납
+	public void close() {
+		if(rs!=null)
+			try {
+				rs.close();
+				
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	} // close() end
 }
