@@ -105,4 +105,114 @@ public class ProductDAO {
 		}
 		return list;
 	}
-}
+	
+	// 상품정보를 조회 - 상품번호로 조회하는 메소드 - getData()
+	public ProductVO getData(int pno) {
+		sb.setLength(0);
+		sb.append("select * from product ");
+		sb.append("where pno = ? ");
+		
+		ProductVO vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, pno);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			String pname = rs.getString(2);
+			int price = rs.getInt(3);
+			int dcratio = rs.getInt(4);
+			String prodesc = rs.getString(5);
+			int qty = rs.getInt(6);
+			String imgfile = rs.getString(7);
+			String bgfile = rs.getString(8);
+			
+			vo = new ProductVO(pno, pname, price, dcratio, prodesc, qty, imgfile, bgfile);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+	} // getData() end
+	
+	// 추가한 상품의 정보를 변경 - modifyData();
+	
+	public void modifyData(ProductVO vo) {
+		sb.setLength(0);
+		sb.append("update product ");
+		sb.append("set pname = ?, price = ? , qty = ? ");
+		sb.append("where pno = ? ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			pstmt.setString(1, vo.getPname());
+			pstmt.setInt(2, vo.getPrice());
+			pstmt.setInt(3, vo.getQty());
+			pstmt.setInt(4, vo.getPno());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	// 상품 삭제하는 메소드 - dropData()
+	public void dropData(int pno) {
+		sb.setLength(0);
+		sb.append("delete from product ");
+		sb.append("where pno = ? ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, pno);
+			
+			pstmt.executeQuery();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	// 개별 상품이름으로 조회하는 메소드 - getDataByName();
+	public ProductVO getDataByName(String pname) {
+		sb.setLength(0);
+		sb.append("select * from product ");
+		sb.append("where pname = ? ");
+		
+		ProductVO vo = null;
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setString(1, pname);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			int pno = rs.getInt(1);
+			pname = rs.getString(2);
+			int price = rs.getInt(3);
+			int dcratio = rs.getInt(4);
+			String prodesc = rs.getString(5);
+			int qty = rs.getInt(6);
+			String imgfile = rs.getString(7);
+			String bgfile = rs.getString(8);
+			
+			vo = new ProductVO(pno, pname, price, dcratio, prodesc, qty, imgfile, bgfile);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	
+} // class end

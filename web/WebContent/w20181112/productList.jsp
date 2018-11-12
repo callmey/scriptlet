@@ -61,9 +61,10 @@
 	
 		<div class="wrap">
 			<%=vo.getPno() %>
-			<img src="<%=vo.getImgfile() %>" alt="<%=vo.getPname()%>" />
+			<a href="productDetail.jsp?pno=<%=vo.getPno()%>
+			"><img src="<%=vo.getImgfile() %>" alt="<%=vo.getPname()%>" /></a>
 			<p><%=vo.getPname() %></p>
-			<p class="price"><%=vo.getPrice() %></p>
+			<p class="price"><%=vo.getPrice() %> 원</p>
 			<p class="red">마감임박</p>
 			<p><%=vo.getDcratio() %> % 할인</p>
 			<p>
