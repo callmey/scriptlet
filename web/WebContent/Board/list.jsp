@@ -45,6 +45,9 @@
 </style>
 </head>
 <body>
+<a href="write.jsp">
+					<input type="button" value="등록" />
+</a>
 	<table>
 		<tr>
 			<th class="col1">게시물번호</th>
@@ -64,7 +67,7 @@
 		
 		<tr>
 			<td class="col1"><%=vo.getBno() %></td>
-			<td class="col2"><%=vo.getTitle() %></td>
+			<td class="col2"><a href="detail.jsp?bno=<%=vo.getBno()%>"><%=vo.getTitle() %></a></td>
 			<td class="col3"><%=vo.getWriter()%></td>
 			<td class="col4"><%=vo.getHits()%></td>
 		</tr>
