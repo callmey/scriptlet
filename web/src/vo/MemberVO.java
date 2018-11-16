@@ -24,6 +24,20 @@ public class MemberVO {
 		this.email = email;
 	}
 
+
+	public MemberVO(String id, String pw, String name, String birth, String mp, String email, String regdate,
+			int memno) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.birth = birth;
+		this.mp = mp;
+		this.email = email;
+		this.regdate = regdate;
+		this.memno = memno;
+	}
+
 	public String getId() {
 		return id;
 	}

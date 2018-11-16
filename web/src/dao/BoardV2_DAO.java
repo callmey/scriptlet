@@ -10,16 +10,16 @@ import connection.OracleXEConnection;
 import vo.BoardVO;
 
 public class BoardV2_DAO {
-
 	StringBuffer sb = new StringBuffer();
 	ResultSet rs = null;
 	PreparedStatement pstmt = null;
 	Connection conn = null;
-
+	BoardVO vo = new BoardVO();
+	
 	public BoardV2_DAO() {
 		conn = OracleXEConnection.getInstance().getConnection();
-	} // 생성자 end
-
+	}//생성자 end
+	
 	// 게시글 입력 메소드
 	public void addData(BoardVO vo) {
 		sb.setLength(0);
@@ -77,11 +77,16 @@ public class BoardV2_DAO {
 		}
 		return list;
 	} // getAllData() end
-
+	
+	
 	// 페이징 처리를 위한 전체 조회 메소드
 	public ArrayList<BoardVO> getAllData(int startNo, int endNo) {
 		ArrayList<BoardVO> list = new ArrayList<>();
-
+		//1. rownum기준으로 줄을 세운다 select * from board order by rownum desc where rownum <= end No
+		//2. select rownum rn, * from ( select * from board order by rownum desc where rownum <= end No)
+		//	where rn >=startNo
+		//3. select * from(select rownum rn, * from ( select * from board order by rownum desc where rownum <= end No)
+		//	where rn >=startNo)
 		sb.setLength(0);
 		sb.append("select * ");
 		sb.append("from (select rownum rn, bno, title, writer, contents, ip, hits, regdate, status ");
@@ -118,7 +123,7 @@ public class BoardV2_DAO {
 	} // getAllData() end
 	
 	
-		// 데이터 한건 조회 메소드
+	// 데이터 한건 조회 메소드
 
 	public BoardVO getData(int bno) {
 		sb.setLength(0);
@@ -152,7 +157,7 @@ public class BoardV2_DAO {
 		}
 		return vo;
 	} // getData() end
-
+	
 	// 게시글 수정 메소드
 	public void modifyData(BoardVO vo) {
 		sb.setLength(0);
@@ -233,5 +238,4 @@ public class BoardV2_DAO {
 			e.printStackTrace();
 		}
 	} // raiseHits() end
-
-} // class end
+}// class() end

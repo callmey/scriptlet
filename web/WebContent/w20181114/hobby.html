@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hobby.html</title>
+</head>
+<body>
+	<!-- 데이터가 전달될 곳 주소와 서블릿 annotation 주소를 매칭 -->
+	<form action="printHobby.do" method="get"><!-- 서블릿을 사용하면 주소를 감출 수도 있다. 데이터의 흐름을 제어할 수 있다. -->
+	
+		<table>
+			<tr>
+				<th>당신의 취미를 선택하세요</th>
+			</tr>
+			
+			<tr>
+				<td>
+					<input type="checkbox" name="hobby" id="" value="야구" />야구
+					<input type="checkbox" name="hobby" id="" value="농구" />농구
+					<input type="checkbox" name="hobby" id="" value="축구" />축구
+					<input type="checkbox" name="hobby" id="" value="배구" />배구
+					<input type="checkbox" name="hobby" id="" value="발야구" />발야구
+				</td>
+			</tr>
+			
+			<tr>
+				<td><input type="submit" value="전송" /></td>
+			</tr>
+			
+		</table>
+	
+	</form>
+
+</body>
+</html>

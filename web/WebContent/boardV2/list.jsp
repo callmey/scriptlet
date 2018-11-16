@@ -10,13 +10,11 @@
 	
 	// 현재 페이지 초기화
 	int currentPage = 0;
-
 	if(cp!=null) {
 		currentPage = Integer.parseInt(cp);
 	}else {
 		currentPage = 1;
 	}
-
 	BoardV2_DAO dao = new BoardV2_DAO();
 	
 	int totalCount = dao.getTotalCount();
@@ -46,7 +44,6 @@
 	out.println("현재 페이지 번호 " + currentPage + "<br/>");
 	out.println("현재 페이지 시작 번호 : " + startNo + "<br/>");
 	out.println("현재 페이지의 끝 번호 : " + endNo + "<br/>");
-
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -58,32 +55,26 @@ table {
 	width: 1000px;
 	margin: 0 auto;
 }
-
 table, th, tr, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 	font-size: 20px;
 }
-
 .col1, .col4 {
 	width: 15%;
 	text-align: center;
 }
-
 .col2 {
 	width: 50%;
 }
-
 .col3 {
 	width: 20%;
 }
-
 th {
 	padding: 2px;
 	background: -webkit-gradient(linear, 78% 20%, 10% 20%, from(#66ffff),
 		to(#ffff80));
 }
-
 #btn {
 	text-aling: right;
 }
