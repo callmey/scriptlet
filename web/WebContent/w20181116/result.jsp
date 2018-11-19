@@ -15,9 +15,9 @@
 	<!-- 파일 업로드 가능 구현 -->
 	<%
 		// upload directory 경로 얻어오기
-		String saveDir = request.getRealPath("upload");
+		String saveDir = request.getRealPath("up");
 	
-		//out.println(saveDir);
+		out.println(saveDir);
 		
 		// 첨부파일 최대크기 지정 : ex) 1024 - 1kb
 		int maxFileSize = 1204*1024*10; // 10MB
@@ -47,14 +47,14 @@
 		StringBuffer sb = new StringBuffer();
 		
 		sb.append("insert into fileuploadtest ");
-		sb.append("values (file_fno_seq.nextval, ?, ?, ?, ? )");
+		sb.append("values (file_fno_seq.nextval, ?, ?, ?, ? ) ");
 		
 		// 문장 객체
 		PreparedStatement pstmt = conn.prepareStatement(sb.toString());
 		pstmt.setString(1, title);
 		pstmt.setString(2, writer);
 		pstmt.setString(3, contents);
-		pstmt.setString(4, "../upload/"+fileName); 
+		pstmt.setString(4, "../up/"+fileName); 
 		
 		pstmt.executeUpdate();
 		
@@ -66,5 +66,11 @@
 	<br />
 	
 	<a href="dirView.jsp">파일정보</a>
+	
+	<a href="view.jsp?writer=<%=writer %>">이미지출력</a>
+	
+	<!-- view.jsp 화면에 업로드한 이미지가 출력 -->
+	
+	
 </body>
 </html>
