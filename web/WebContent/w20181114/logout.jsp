@@ -7,7 +7,7 @@
 	
 	Cookie c = new Cookie("id", "-150");// 새 정보 집어넣고 바로 빼면됨 
 	
-	c.setMaxAge(0);
+	c.setMaxAge(0); // 쿠키를 더이상 사용하지 못하도록 함
 	
 	response.addCookie(c);
 	response.sendRedirect("login.jsp");

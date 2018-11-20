@@ -207,7 +207,7 @@ public class ProductDAO {
 			String bgfile = rs.getString(8);
 			
 			vo = new ProductVO(pno, pname, price, dcratio, prodesc, qty, imgfile, bgfile);
-			
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

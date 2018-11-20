@@ -21,16 +21,15 @@
 		
 		String i = URLEncoder.encode(id, "UTF-8");
 		
-		Cookie c = new Cookie("id", i);
-		c.setMaxAge(60*60*24);
-		//c.setMaxAge(5);
+		Cookie c = new Cookie("id", i); //id라는 이름과 i값으로 쿠키 생성
+		c.setMaxAge(60*60*24); // 쿠키의 유효시간 설정
 		
 		response.addCookie(c);
 		response.sendRedirect("login.jsp");
 	
 		
 	}else{
-		out.println("아이디/비밀번호를 확인해 주세요.");
+		out.println("회원가입하세요.");
 	}
 	
 %>

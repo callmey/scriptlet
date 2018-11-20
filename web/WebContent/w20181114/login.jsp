@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>login.jsp</title>
-</head>
 <style type="text/css">
 
 	table{margin: 0 auto;}
@@ -16,7 +15,7 @@
 	}
 
 </style>
-
+</head>
 <body>
 
 	<!-- 쿠키 목록에서 id 값이 있는지 비교한 다음
@@ -36,13 +35,17 @@
 	 	Cookie[] clist = request.getCookies();
 	 	String id =null;
 	 	
-	 	if(clist!=null){
+	 	if(clist!=null){ 
 	 	
 	 		for(Cookie c : clist){
-	 			if(c.getName().equals("id")){
-	 				id= URLDecoder.decode(c.getValue(),"UTF-8");
+	 			if(c.getName().equals("id")){ //쿠키의 이름이 id일때
+	 				id= URLDecoder.decode(c.getValue(),"UTF-8"); // 해당 쿠키의 값을 id 변수에 저장한다.
 	 			}
 	 		}
+	 	}
+	 	
+	 	if(id==null) {
+	 	
 	 	
 	 	
 	 
@@ -62,8 +65,8 @@
 				
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="확인" />
-						<input type="button" value="" />
+						<input type="submit" value="로그인" />
+						<input type="button" value="회원가입" />
 					</td>
 				</tr>
 			</table>
@@ -78,7 +81,7 @@
 	
 	%>
 	
-		<h2><a href="logout.jsp"><span><%=id %> 님</span></a> 환영합니다.</h2>
+		<h2><a href="logout.jsp"><span><%=id %> 님</span></a> 환영합니다.</h2> <!-- 아이디 누를 시 로그아웃 -->
 	
 	<%
 		}

@@ -204,6 +204,29 @@ public class MemberDAO {
 		
 	}//isExist() end
 	
+	// id로만 존재하는 회원인지 여부를 판단하는 메소드
+	public boolean isExistId(String id) {
+		sb.setLength(0);
+		sb.append("SELECT * FROM member ");
+		sb.append("WHERE id = ? ");
+		
+		boolean isOk = false;		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			pstmt.setString(1, id);				
+			rs= pstmt.executeQuery();
+			
+			isOk = rs.next();//존재 여부만 파악해서 리턴			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		return isOk;
+	}
+	
 	// 자원반납
 	public void close() {
 		if(rs!=null)
