@@ -76,7 +76,7 @@ public class ProductDAO {
 	}
 	
 	// 상품정보를 전체조회 메소드 - getAllData() 
-	public ArrayList getAllData() {
+	public ArrayList<ProductVO> getAllData() {
 		ArrayList<ProductVO> list = new ArrayList<>();
 		
 		sb.setLength(0);
