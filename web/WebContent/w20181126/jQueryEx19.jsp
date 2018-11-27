@@ -15,7 +15,7 @@
 				var left = parseInt($("#box2").css("left"));				
 				
 				// 이미지가 다 지나간 경우 오른쪽에서 다시 나오게 설정해보세요
-				if(left < -1100){
+				if(left < -800){
 					$("#box2").css("left", "0px");
 				}
 				
